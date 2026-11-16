@@ -1,0 +1,28 @@
+name: Proves
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Executar les proves
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descarregar el codi
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instal·lar dependències
+        run: npm ci
+
+      - name: Executar les proves
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: npm test

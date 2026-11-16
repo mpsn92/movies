@@ -1,0 +1,17 @@
+{# La vista rep un document ja obtingut pel controlador. #}
+{% extends "base.njk" %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ movie.title }}</h1>
+  <dl>
+    <dt>Any</dt><dd>{{ movie.year }}</dd>
+    <dt>Direcció</dt><dd>{{ movie.director }}</dd>
+    <dt>Duració</dt><dd>{{ movie.duration }} minuts</dd>
+    <dt>Gèneres</dt>
+    <dd>{% if movie.genre.length %}{{ movie.genre | join(', ') }}{% else %}Sense indicar{% endif %}</dd>
+    <dt>Puntuació</dt><dd>{{ movie.rate }}</dd>
+  </dl>
+  <p><a href="/movies/{{ movie._id }}/edit">Editar</a></p>
+{% endblock %}

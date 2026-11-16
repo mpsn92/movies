@@ -1,0 +1,38 @@
+{# Hereta l'esquelet HTML; només definix els blocs que canvien. #}
+{% extends "base.njk" %}
+
+{% block title %}Pel·lícules{% endblock %}
+
+{% block content %}
+  <h1>Pel·lícules</h1>
+
+  <form action="/movies" method="get">
+    {# GET conserva el filtre en la URL i no modifica dades. #}
+    <label for="genre">Filtra per gènere</label>
+    <input id="genre" name="genre" value="{{ genre }}">
+    <button type="submit">Filtrar</button>
+    <a href="/movies">Netejar filtre</a>
+  </form>
+
+  {% if movies.length %}
+    <ul>
+      {# El controlador ha consultat MongoDB i ha passat l'array a la vista. #}
+      {% for movie in movies %}
+        <li>
+          <a href="/movies/{{ movie._id }}">{{ movie.title }}</a>
+          ({{ movie.year }})
+          {% if movie.poster %}
+            <a class="button" href="{{ movie.poster }}" target="_blank" rel="noopener noreferrer">Veure cartell</a>
+          {% endif %}
+          <a href="/movies/{{ movie._id }}/edit">Editar</a>
+          {# Esborrar requerix un POST, mai un enllaç GET. #}
+          <form action="/movies/{{ movie._id }}/delete" method="post" class="inline-form">
+            <button type="submit">Esborrar</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hi ha cap pel·lícula que complisca el filtre.</p>
+  {% endif %}
+{% endblock %}

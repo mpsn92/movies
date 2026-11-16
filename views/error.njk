@@ -1,0 +1,10 @@
+{# Només es reben valors segurs preparats pel middleware d'errors. #}
+{% extends "base.njk" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <p class="error">{{ message }}</p>
+  <p><a href="/movies">Torna al llistat</a></p>
+{% endblock %}
