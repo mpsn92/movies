@@ -1,4 +1,5 @@
 //IMPORTS, LLISTAT I FILTRE
+//API
 
 const Movie = require("../models/movie");
 
@@ -156,6 +157,9 @@ exports.removeApi = async (req, res, next) => {
     return next(error);
   }
 };
+
+//WEB
+
 //Escolta la web
 exports.listWeb = async (req, res, next) => {
   try {

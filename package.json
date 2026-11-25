@@ -1,7 +1,7 @@
 {
   "name": "pelicules",
   "version": "1.0.0",
-  "description": "",
+  "description": "``` mkdir mi-proyecto-express cd mi-proyecto-express ```",
   "main": "index.js",
   "scripts": {
     "import:posters": "node scripts/import-posters.js",
@@ -17,5 +17,14 @@
     "express": "^5.3.0",
     "mongoose": "^9.12.1",
     "nunjucks": "^3.2.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpsn92/movies.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mpsn92/movies/issues"
+  },
+  "homepage": "https://github.com/mpsn92/movies#readme"
 }
